@@ -1,0 +1,40 @@
+---
+title: 'Designing Shuttlr: The UX of Real-Time Transit'
+publishedAt: '2026-06-25'
+summary: 'A look into how we built Shuttlr, balancing real-time state synchronization with a high-stress commuting user environment.'
+---
+
+Commuting is inherently stressful. When users open a transit app, they are often in a hurry, navigating crowded spaces, or worried about missing their ride. 
+
+With **Shuttlr**, the goal was to build a transit-coordination platform that reduces this anxiety by prioritizing extreme speed, absolute clarity, and zero-friction flows.
+
+## The Commuter's Psychology
+
+Most booking apps are designed for leisurely browsing. They show rich images, promotional banners, and multiple upsell steps. 
+
+For a commuter, this is visual noise. Under stress, our working memory and visual focus shrink. In design, this is governed by **Hick's Law**: the time it takes to make a decision increases with the number and complexity of choices.
+
+To address this, we designed Shuttlr's booking flow to be completed in exactly three taps:
+1. Confirm destination.
+2. Select closest route.
+3. Book ticket.
+
+By eliminating non-essential options and using large, high-contrast tappable cards, we minimized the physical and mental effort required to book a ride on the move.
+
+## Handling Real-Time Uncertainty
+
+A major source of anxiety for commuters is not knowing where their shuttle is. Static ETA estimates are rarely accurate enough to build trust.
+
+To solve this, we implemented real-time location streaming over WebSockets. But showing a raw coordinate on a map isn't enough. We applied smoothing algorithms to prevent the shuttle icon from jumping around the map, which users psychologically perceive as system instability.
+
+Furthermore, we updated ETAs dynamically and added clear, plain-language status alerts (e.g., *"Arriving in 3 mins — slightly delayed by traffic"*). Transparency builds trust, even when things don't go perfectly.
+
+## Optimizing for One-Handed Use
+
+People use transit apps while walking, holding bags, or clinging to handrails on a bus. This means the interface must be optimized for one-handed operation.
+
+We placed all key interactive elements (buttons, inputs, filters) in the bottom half of the screen—within easy reach of the user's thumb (the "thumb zone"). The top half is reserved purely for information display, such as the route map or booking status.
+
+## What's Next
+
+Building Shuttlr taught us that great UX isn't about adding features; it is about subtraction. By identifying the core user need and stripping away everything else, we created a tool that fits seamlessly into the user's daily life.
